@@ -514,12 +514,10 @@ function sendMessage() {
     message: document.getElementById("message").value
   };
 
-  fetch("http://localhost:1210/contact", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
+  fetch("https://your-backend-link.onrender.com/contact", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data)
   })
   .then(response => response.json())
   .then(result => {
