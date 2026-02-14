@@ -514,7 +514,7 @@ function sendMessage() {
     message: document.getElementById("message").value
   };
 
-  fetch("https://your-backend-link.onrender.com/contact", {
+  fetch("http://your-backend-link.onrender.com/contact", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(data)
