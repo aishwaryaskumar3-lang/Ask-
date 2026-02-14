@@ -458,23 +458,37 @@
 </section>
 
 <section id="contact">
-  <div class="title"><h2>Get in Touch</h2><div class="underline"></div></div>
-  <p class="contact-text">Feel free to reach out for collaborations, projects, or just a friendly chat!</p>
-  <div class="contact-grid">
-    <div class="contact-box"><h4>Email</h4><p>Aishwaryaskumar3@gmail.com</p></div>
-    <div class="contact-box"><h4>GitHub</h4><p>github.com/aishwaryasharma</p></div>
-    <div class="contact-box"><h4>Location</h4><p>Bengaluru, India</p></div>
-
-    <div class="contact-form-container">
-  <div class="contact-form">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="email" id="email" placeholder="Your Email" required>
-    <textarea id="message" placeholder="Your Message" required></textarea>
-    <button onclick="sendMessage()">Send</button>
+  <div class="title">
+    <h2>Get in Touch</h2>
+    <div class="underline"></div>
   </div>
+
+  <p class="contact-text">
+    Feel free to reach out for collaborations, projects, or just a friendly chat!
+  </p>
+
+  <!-- NEW WRAPPER -->
+  <div class="contact-wrapper">
+
+    <!-- contact cards -->
+    <div class="contact-grid">
+      <div class="contact-box"><h4>Email</h4><p>Aishwaryaskumar3@gmail.com</p></div>
+      <div class="contact-box"><h4>GitHub</h4><p>github.com/aishwaryasharma</p></div>
+      <div class="contact-box"><h4>Location</h4><p>Bengaluru, India</p></div>
     </div>
 
-  </section>
+    <!-- contact form -->
+    <div class="contact-form-container">
+      <div class="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+  </div>
+</section>
 </section>
 
 <footer>
@@ -489,7 +503,7 @@ function sendMessage() {
     message: document.getElementById("message").value
   };
 
-  fetch("http://localhost:3000/contact", {
+  fetch("http://localhost: 1210/contact", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
