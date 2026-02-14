@@ -319,6 +319,50 @@
 .contact-form {
   padding: 20px;
                  }
+    /* ===== Contact Form Center & Spacing ===== */
+.contact-form-container {
+  display: flex;
+  justify-content: center;   /* centers form horizontally */
+  margin-top: 40px;          /* space between cards and form */
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 500px;          /* form won’t be too wide on big screens */
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;       /* more space between fields */
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.contact-form button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4fb7ad, #63c6bd);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(79,183,173,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79,183,173,0.5);
+      }
   </style>
 </head>
 <body>
@@ -414,13 +458,14 @@
     <div class="contact-box"><h4>GitHub</h4><p>github.com/aishwaryasharma</p></div>
     <div class="contact-box"><h4>Location</h4><p>Bengaluru, India</p></div>
 
+    <div class="contact-form-container">
   <div class="contact-form">
     <input type="text" id="name" placeholder="Your Name" required>
     <input type="email" id="email" placeholder="Your Email" required>
     <textarea id="message" placeholder="Your Message" required></textarea>
-
     <button onclick="sendMessage()">Send</button>
   </div>
+    </div>
 
   </section>
 </section>
