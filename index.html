@@ -400,5 +400,26 @@
   <p>Aishwarya s kumar <br>© 2026 All rights reserved. Built with ❤️ and curiosity.</p>
 </footer>
 
+  <script>
+function sendMessage() {
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value
+  };
+
+  fetch("http://localhost:3000/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(result => alert(result.message))
+  .catch(err => console.log(err));
+}
+  </script>
+
 </body>
   </html>
