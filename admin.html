@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Messages</title>
+  <style>
+    body { font-family: Arial; background:#f5f7fb; padding:20px; }
+    .msg { background:white; padding:15px; margin-bottom:10px; border-radius:8px; }
+  </style>
+</head>
+<body>
+
+<h2>Received Messages</h2>
+<div id="messages"></div>
+
+<script>
+fetch("http://localhost:1210/messages")
+.then(res => res.json())
+.then(data => {
+  const box = document.getElementById("messages");
+  data.forEach(m => {
+    box.innerHTML += `
+      <div class="msg">
+        <b>Name:</b> ${m.name}<br>
+        <b>Email:</b> ${m.email}<br>
+        <b>Message:</b> ${m.message}<br>
+        <small>${m.date}</small>
+      </div>
+    `;
+  });
+});
+</script>
+
+</body>
+</html>
