@@ -495,7 +495,7 @@
   <p>Aishwarya s kumar <br>© 2026 All rights reserved. Built with ❤️ and curiosity.</p>
 </footer>
 
-  <script>
+<script>
 function sendMessage() {
   const data = {
     name: document.getElementById("name").value,
@@ -503,18 +503,27 @@ function sendMessage() {
     message: document.getElementById("message").value
   };
 
-  fetch("http://localhost: 1210/contact", {
+  fetch("http://localhost:3000/contact", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
   })
-  .then(res => res.json())
-  .then(result => alert(result.message))
-  .catch(err => console.log(err));
+  .then(response => response.json())
+  .then(result => {
+    alert(result.message); // shows "Success"
+    // Optional: clear the form
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("message").value = "";
+  })
+  .catch(error => {
+    alert("Something went wrong!");
+    console.error(error);
+  });
 }
-  </script>
+</script>
 
 </body>
   </html>
