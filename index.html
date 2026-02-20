@@ -514,7 +514,7 @@ function sendMessage() {
     message: document.getElementById("message").value
   };
 
-  fetch("https://portfolio-backend-q6mj.onrender.com/contact",  {
+  fetch("http://localhost:1210/contact", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(data)
