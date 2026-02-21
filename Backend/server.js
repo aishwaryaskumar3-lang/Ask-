@@ -28,7 +28,9 @@ app.post("/contact", (req, res) => {
 
   res.json({ message: "Message saved successfully" });
 });
-
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully 🚀");
+});
 app.get("/messages", (req, res) => {
   const messages = JSON.parse(fs.readFileSync("messages.json"));
   res.json(messages);
