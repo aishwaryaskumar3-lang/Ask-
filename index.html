@@ -28,19 +28,17 @@
 
     html{scroll-behavior:smooth;}
 
-    body{
-  margin:0;
-  padding:0;
-  min-height:100vh;
+    html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
-  background-image: url('images/background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
+body{
+  min-height: 100vh;
+  background: url('images/background.png') top center / cover no-repeat fixed;
   color: var(--text);
-    }
+}
 
     /* ---------------- HEADER ---------------- */
     header{
