@@ -485,7 +485,7 @@ backdrop-filter: blur(8px);
         <input type="text" id="name" placeholder="Your Name" required>
         <input type="email" id="email" placeholder="Your Email" required>
         <textarea id="message" placeholder="Your Message" required></textarea>
-        <button onclick="sendMessage()">Send</button>
+        <button type="button" onclick="sendMessage()">Send</button>
       </div>
     </div>
   </div>
@@ -496,8 +496,35 @@ backdrop-filter: blur(8px);
 </footer>
 
 <script>
-function sendMessage() {
+async function sendMessage() {
   const data = {
     name: document.getElementById("name").value,
     email: document.getElementById("email").value,
-    message: document.getElementBy
+    message: document.getElementById("message").value
+  };
+
+  try {
+    const response = await fetch("https://YOUR-REAL-BACKEND-URL.onrender.com/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    alert(result.message);
+
+    // Clear form
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("message").value = "";
+
+  } catch (error) {
+    alert("Error sending message");
+    console.error(error);
+  }
+}
+</script> 
+</body>
+</html>
