@@ -1,3 +1,4 @@
+require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -8,11 +9,18 @@ const PORT = process.env.PORT || 1210;
 app.use(cors());
 app.use(express.json());
 
+mongoose.connect("mongodb+srv://portfoliouser:aishwaryaskumar@cluster0.qyqzsvy.mongodb.net/portfolioDB?retryWrites=true&w=majority")
+.then(() => {
+    console.log("MongoDB Connected Successfully");
 
-// ✅ MongoDB Connection (PASTE HERE)
-mongoose.connect("mongodb+srv://portfoliouser:portfolio@1210@cluster0.qyxzsv.mongodb.net/portfolioDB")
-.then(() => console.log("MongoDB Connected Successfully"))
-.catch((err) => console.log(err));
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+
+})
+.catch((err) => {
+    console.log("MongoDB connection failed:", err);
+});
 
 
 // ✅ Create Schema
@@ -49,16 +57,16 @@ app.post("/contact", async (req, res) => {
 
 // ✅ Get Messages from MongoDB
 app.get("/messages", async (req, res) => {
-  const messages = await Contact.find();
-  res.json(messages);
+  try {
+    const messages = await Contact.find();
+    res.json(messages);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching messages" });
+  }
 });
 
 
+// ✅ Test Route
 app.get("/", (req, res) => {
   res.send("Backend is running successfully 🚀");
-});
-
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
 });
